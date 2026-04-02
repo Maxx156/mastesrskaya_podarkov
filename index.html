@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Мастерская подарков ручной работы. Уникальные изделия из натуральных материалов с душой. Индивидуальный дизайн, ручная работа, доставка по России.">
+    <title>Ручная Работа | Мастерская подарков</title>
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: мягкий и элегантный шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEFAF5;
+            color: #2E241F;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Цветовая палитра: тёплая, handmade */
+        :root {
+            --cream: #FEF8ED;
+            --warm-beige: #F2E3D5;
+            --clay: #C38D6F;
+            --deep-wood: #5A3E2B;
+            --accent-rose: #D9A07A;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
+            --border-radius-card: 1.5rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 250, 240, 0.96);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 1px solid rgba(195, 141, 111, 0.2);
+            padding: 16px 0;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--deep-wood);
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--clay);
+            font-size: 1.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--deep-wood);
+            transition: 0.2s;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover {
+            color: var(--clay);
+            border-bottom-color: var(--clay);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--clay);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.25s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--clay);
+            color: var(--clay);
+        }
+
+        .btn-outline:hover {
+            background: var(--clay);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn:hover {
+            background-color: #b07454;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 70px 0 80px;
+            background: linear-gradient(135deg, #FDF3E7 0%, #F9EADB 100%);
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.4rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--deep-wood);
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #5a4232;
+            margin-bottom: 32px;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 40px;
+            box-shadow: var(--shadow-md);
+            width: 100%;
+            max-width: 460px;
+            object-fit: cover;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--deep-wood);
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #7a5a48;
+            max-width: 680px;
+            margin: 0 auto 56px auto;
+            font-size: 1.1rem;
+        }
+
+        /* About */
+        .about-grid {
+            display: flex;
+            gap: 48px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.9rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #3e2c21;
+        }
+
+        .about-features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .feature-icon {
+            background: var(--warm-beige);
+            width: 48px;
+            height: 48px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--clay);
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Catalog / Products grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 36px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius-card);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(195, 141, 111, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .product-img {
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.03);
+        }
+
+        .product-info {
+            padding: 24px 20px 28px;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            color: #6b4e3a;
+            margin: 10px 0 16px;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--clay);
+            margin-bottom: 20px;
+        }
+
+        .order-btn {
+            width: 100%;
+            background: var(--deep-wood);
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .order-btn:hover {
+            background: var(--clay);
+        }
+
+        /* Benefits */
+        .benefits-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            flex: 1;
+            min-width: 180px;
+            background: white;
+            padding: 32px 20px;
+            border-radius: 32px;
+            box-shadow: var(--shadow-sm);
+            transition: 0.2s;
+        }
+
+        .benefit-icon {
+            font-size: 2.8rem;
+            color: var(--clay);
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 28px;
+            flex: 1;
+            min-width: 260px;
+            max-width: 380px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f0e2d4;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #3a2a1f;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--deep-wood);
+        }
+
+        .stars {
+            color: #e6b17e;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* Contact */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            background: #FFFBF5;
+            border-radius: 48px;
+            padding: 48px 40px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.9rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .contact-detail i {
+            font-size: 1.6rem;
+            color: var(--clay);
+            width: 36px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .social-links a {
+            background: var(--warm-beige);
+            width: 46px;
+            height: 46px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--deep-wood);
+            font-size: 1.4rem;
+            transition: 0.2s;
+        }
+
+        .social-links a:hover {
+            background: var(--clay);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #e2cfbf;
+            border-radius: 30px;
+            font-family: 'Inter', sans-serif;
+            background: white;
+            transition: 0.2s;
+        }
+
+        .form-group textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--clay);
+            box-shadow: 0 0 0 3px rgba(201, 125, 79, 0.2);
+        }
+
+        .submit-btn {
+            background: var(--deep-wood);
+            width: 100%;
+            padding: 14px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #2E241F;
+            color: #e5d9cf;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        @media (max-width: 780px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .nav-bar {
+                flex-direction: column;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .contact-wrapper {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav-bar">
+            <div class="logo">Ручная<span>Мастерская</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#catalog">Подарки</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Подарки, в которые вложена душа</h1>
+                    <p>Уникальные изделия ручной работы из натуральных материалов. Создаём тепло и индивидуальность для ваших близких.</p>
+                    <div class="hero-buttons">
+                        <a href="#catalog" class="btn">Выбрать подарок</a>
+                        <a href="#contact" class="btn btn-outline">Индивидуальный заказ</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1606728035284-d7f0c6b2a02b?w=600&auto=format" alt="Ручная работа - подарки" loading="eager">
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Мастерская тёплых моментов</h3>
+                        <p>Мы создаём подарки, которые невозможно забыть. Каждое изделие — это ручная работа с вниманием к мельчайшим деталям. Натуральное мыло, авторские свечи, вышивка и керамика — всё пропитано уютом и заботой.</p>
+                        <p>Наша команда вдохновляется природой, этникой и современными трендами, чтобы каждый подарок стал отражением индивидуальности.</p>
+                        <div class="about-features">
+                            <div class="feature-icon"><i class="fas fa-hand-sparkles"></i></div>
+                            <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                        </div>
+                    </div>
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1533035353720-f1c6a75cd8ab?w=600&auto=format" alt="Процесс создания подарков">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catalog -->
+        <section id="catalog" style="background-color: #FCF6EF;">
+            <div class="container">
+                <h2 class="section-title">Наши авторские изделия</h2>
+                <p class="section-sub">Каждый предмет создан в единственном экземпляре или ограниченной серии. Выберите подарок с душой.</p>
+                <div class="products-grid">
+                    <!-- Карточка 1: Мыло ручной работы -->
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1600857062241-98e5dba7f214?w=500&auto=format" alt="Натуральное мыло handmade">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Натуральное мыло</div>
+                            <div class="product-desc">Эфирные масла, глина, лепестки. Нежная забота о коже.</div>
+                            <div class="product-price">1 200 ₽ / набор</div>
+                            <button class="order-btn" data-product="Натуральное мыло">Заказать</button>
+                        </div>
+                    </div>
+                    <!-- Карточка 2: Ароматическая свеча -->
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1602874801007-bd36b2f7b7a2?w=500&auto=format" alt="Соевая свеча ручной работы">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Соевая свеча</div>
+                            <div class="product-desc">100% соевый воск, фитиль из дерева, ароматы лаванды и ванили.</div>
+                            <div class="product-price">1 550 ₽</div>
+                            <button class="order-btn" data-product="Соевая свеча">Заказать</button>
+                        </div>
+                    </div>
+                    <!-- Карточка 3: Вышитая салфетка / панно -->
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1563993359903-db46a3bbbe43?w=500&auto=format" alt="Вышивка ручной работы">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Вышитое панно</div>
+                            <div class="product-desc">Изысканная вышивка гладью, деревянная рама, уникальный дизайн.</div>
+                            <div class="product-price">2 450 ₽</div>
+                            <button class="order-btn" data-product="Вышитое панно">Заказать</button>
+                        </div>
+                    </div>
+                    <!-- Карточка 4: Именная кружка с росписью -->
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=500&auto=format" alt="Керамическая кружка hand painted">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Кружка с росписью</div>
+                            <div class="product-desc">Ручная глазурь, огнеупорная керамика, можно нанести имя.</div>
+                            <div class="product-price">1 800 ₽</div>
+                            <button class="order-btn" data-product="Кружка с росписью">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section>
+            <div class="container">
+                <h2 class="section-title">Почему выбирают нас</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-hand-peace"></i></div>
+                        <h4>Ручная работа</h4>
+                        <p>Каждое изделие создаётся вручную с любовью и вниманием.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-seedling"></i></div>
+                        <h4>Натуральные материалы</h4>
+                        <p>Только экологичные компоненты, безопасные для здоровья.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-palette"></i></div>
+                        <h4>Уникальный дизайн</h4>
+                        <p>Авторские эскизы, которые невозможно найти в магазинах.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-box-heart"></i></div>
+                        <h4>Подарочная упаковка</h4>
+                        <p>Каждый заказ упакован вручную с шёлковой лентой.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section style="background-color: #FAF1E8;">
+            <div class="container">
+                <h2 class="section-title">Тёплые отзывы</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <div class="testimonial-text">“Заказывала набор мыла и свечу для подруги на день рождения. Подарок выглядел как произведение искусства! Ароматы нежные, упаковка восхитительная. Обязательно закажу ещё.”</div>
+                        <div class="testimonial-author">— Анастасия, Москва</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <div class="testimonial-text">“Вышитое панно стало главным украшением гостиной. Мастер учла все мои пожелания, выполнила работу быстро и с душой. Спасибо за такое трепетное отношение!”</div>
+                        <div class="testimonial-author">— Елена, Санкт-Петербург</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <div class="testimonial-text">“Покупал именную кружку для мужа. Роспись аккуратная, краски стойкие. Очень душевная мастерская, всем рекомендую!”</div>
+                        <div class="testimonial-author">— Дмитрий, Екатеринбург</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact + Form -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Свяжитесь с нами</h2>
+                <p class="section-sub">Расскажите о своей идее, и мы создадим уникальный подарок специально для вас.</p>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Мастерская <br> «Ручная Мастерская»</h3>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>г. Москва, ул. Арбатская, 12 (шоурум по записи)</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+7 (916) 123-45-67</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@handmade-gift.ru</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="feedbackForm">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Email для связи" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="4" id="message" placeholder="Расскажите, какой подарок вы ищете или оставьте пожелание..."></textarea>
+                            </div>
+                            <button type="submit" class="btn submit-btn">Отправить заявку <i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <span>© 2025 Мастерская подарков ручной работы — всё согрето теплом рук</span>
+            <span>С любовью к деталям <i class="fas fa-heart" style="color:#D9A07A;"></i></span>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('.nav-links a, .hero-buttons a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#" || !targetId.startsWith("#")) return;
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Кнопки заказа в каталоге: показ уведомления с контактами
+        const orderButtons = document.querySelectorAll('.order-btn');
+        orderButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const productName = btn.getAttribute('data-product') || "товар";
+                alert(`✨ Спасибо за интерес к "${productName}"!\n\nСвяжитесь с нами любым удобным способом:\n📞 +7 (916) 123-45-67\n✉️ hello@handmade-gift.ru\nИли напишите в Telegram/WhatsApp — мы подберём идеальный вариант!`);
+            });
+        });
+
+        // Обработка формы обратной связи (без реальной отправки на сервер, демо)
+        const form = document.getElementById('feedbackForm');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name')?.value.trim();
+                const email = document.getElementById('email')?.value.trim();
+                if (!name || !email) {
+                    alert('Пожалуйста, заполните имя и email.');
+                    return;
+                }
+                alert(`💌 ${name}, спасибо за ваше сообщение! Наши мастера свяжутся с вами в ближайшее время. Дарите тепло вместе с нами ♥`);
+                form.reset();
+            });
+        }
+
+        // Дополнительный эффект: мягкое появление карточек (опционально, просто визуал)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.product-card, .benefit-card, .testimonial-card').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+```
